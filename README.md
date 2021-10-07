@@ -82,7 +82,7 @@ If this code or the paper were usefull to you, consider citing it:
 
 
 ```bash
-@inproceedings{pimentel-etal-2020-information,
+@inproceedings{pimentel-etal-2021-homophony,
     title = "On Homophony and Rényi Entropy",
     author = "Pimentel, Tiago and
     Meister, Clara and
