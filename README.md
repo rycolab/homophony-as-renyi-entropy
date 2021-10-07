@@ -1,6 +1,6 @@
 # homophony-as-renyi-entropy
 
-[![CircleCI](https://circleci.com/gh/tpimentelms/homophony-as-renyi-entropy.svg?style=svg&circle-token=bf53770e696c076f2b148e9817449f62c39ba984)](https://circleci.com/gh/tpimentelms/homophony-as-renyi-entropy)
+[![CircleCI](https://circleci.com/gh/rycolab/homophony-as-renyi-entropy.svg?style=svg&circle-token=bf53770e696c076f2b148e9817449f62c39ba984)](https://circleci.com/gh/rycolab/homophony-as-renyi-entropy)
 
 This code accompanies the paper [On Homophony and Rényi Entropy](https://arxiv.org/abs/2109.13766) published in EMNLP 2021.
 
