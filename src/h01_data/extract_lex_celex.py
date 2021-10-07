@@ -82,7 +82,8 @@ def get_celex_path(path, language, dtype, lemma):
 
 def read_in_celex_lines(path):
     """ Return lines in given celex file. """
-    return [line.strip().split("\\") for line in open(path, "r").readlines()]
+    with open(path, "r") as f:
+        return [line.strip().split("\\") for line in f]
 
 
 def get_celex_morphology_tag(path_base, language, tag):
@@ -169,9 +170,6 @@ def extract_celex_info(line, freqs, gram, language="english", lemma="lemma"):
 
     filtered_chars = set(['-', '.', '\'', ' '])
     contains_invalid = filtered_chars & set(word)
-
-    if set('"') & set(word):
-        import ipdb; ipdb.set_trace()
 
     if word.isalpha() and ((word.islower()) | (language == 'german')) and \
             not contains_invalid:

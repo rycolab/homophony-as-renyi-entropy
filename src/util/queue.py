@@ -59,9 +59,10 @@ class SampleQueueSingleLength:
 
     def pop(self, batch_size):
         if self.probs_queue.shape[0] <= batch_size:
-            return self._pop_empty()
+            popped = self._pop_empty()
         else:
-            return self._pop_batch(batch_size)
+            popped = self._pop_batch(batch_size)
+        return popped
 
     def _pop_empty(self):
         probs = self.probs_queue
@@ -81,16 +82,18 @@ class SampleQueueSingleLength:
 
         return x, probs
 
-    def fetch_idxs(self, x, idxs):
+    @staticmethod
+    def fetch_idxs(x, idxs):
         return x[idxs]
 
     def remove_idxs(self, x, idxs):
         mask = torch.ones(self.probs_queue.shape[0]).bool()
         mask[idxs] = False
         if len(x.shape) == 2:
-            return x[mask.unsqueeze(-1).repeat(1, x.shape[1])].reshape(-1, x.shape[1])
+            result = x[mask.unsqueeze(-1).repeat(1, x.shape[1])].reshape(-1, x.shape[1])
         else:
-            return x[mask]
+            result = x[mask]
+        return result
 
     @property
     def empty(self):

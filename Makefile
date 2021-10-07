@@ -60,36 +60,36 @@ get_celex: $(CELEX_RAW_FILE)
 clean:
 	rm $(PROCESSED_DATA_FILE)
 
-$(RENYI_SAMPLES): | $(CHECKPOINT_FILE)
+$(RENYI_SAMPLES): $(CHECKPOINT_FILE)
 	echo "Sample renyi from model" $(LOSSES_FILE)
 	python src/h03_eval/sample_renyis.py --raw-file $(CELEX_EXTRACTED_FILE) --checkpoints-path $(CHECKPOINT_DIR_LANG) --model-type $(MODEL) --batch-size 5000 --n-samples $(N_BOOTSTRAP)
 
-$(RENYI_FILE): | $(CHECKPOINT_FILE)
+$(RENYI_FILE): $(CHECKPOINT_FILE)
 	echo "Eval models" $(LOSSES_FILE)
 	python src/h03_eval/get_renyi.py --data-file $(PROCESSED_DATA_FILE) --checkpoints-path $(CHECKPOINT_DIR_LANG) --model-type $(MODEL) --batch-size 1024
 
 # Eval language models
-$(LOSSES_FILE): | $(CHECKPOINT_FILE)
+$(LOSSES_FILE): $(CHECKPOINT_FILE)
 	echo "Eval models" $(LOSSES_FILE)
 	python src/h03_eval/eval.py --data-file $(PROCESSED_DATA_FILE) --checkpoints-path $(CHECKPOINT_DIR_LANG) --model-type $(MODEL)
 
 # Train types Model
-$(CHECKPOINT_FILE): | $(PROCESSED_DATA_FILE)
+$(CHECKPOINT_FILE): $(PROCESSED_DATA_FILE)
 	echo "Train types model" $(CHECKPOINT_FILE)
 	mkdir -p $(CHECKPOINT_DIR_LANG)/$(MODEL)/
 	python src/h02_learn/train.py --data-file $(PROCESSED_DATA_FILE) --checkpoints-path $(CHECKPOINT_DIR_LANG) --model-type $(MODEL)
 
-$(PROCESSED_DATA_FILE): | $(CELEX_EXTRACTED_FILE)
+$(PROCESSED_DATA_FILE): $(CELEX_EXTRACTED_FILE)
 	mkdir -p $(DATA_DIR_LANG)
 	python src/h01_data/process_data.py --dataset $(DATASET) --src-file $(CELEX_EXTRACTED_FILE) --data-path $(DATA_DIR_LANG)
 
 # Get celex
-$(CELEX_EXTRACTED_FILE): | $(CELEX_RAW_FILE)
+$(CELEX_EXTRACTED_FILE): $(CELEX_RAW_FILE)
 	mkdir -p $(CELEX_EXTRACTED_DIR)
 	echo "Get celex data" $(CELEX_EXTRACTED_FILE)
 	python src/h01_data/extract_lex_celex.py --language $(LANGUAGE) --src-path $(CELEX_RAW_DIR_UNCOMPRESSED) --tgt-path $(CELEX_EXTRACTED_DIR) $(MONO_ARG) $(POS_ARG)
 
-$(CELEX_RAW_FILE): | $(CELEX_RAW_FILE_COMPRESSED)
+$(CELEX_RAW_FILE): $(CELEX_RAW_FILE_COMPRESSED)
 	echo "Get celex data"
 	tar -C $(CELEX_RAW_DIR) -zxvf $(CELEX_RAW_FILE_COMPRESSED)
 	touch $(CELEX_RAW_FILE)
