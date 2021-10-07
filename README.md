@@ -2,7 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/rycolab/homophony-as-renyi-entropy.svg?style=svg&circle-token=bf53770e696c076f2b148e9817449f62c39ba984)](https://circleci.com/gh/rycolab/homophony-as-renyi-entropy)
 
-This code accompanies the paper [On Homophony and Rényi Entropy](https://arxiv.org/abs/2109.13766) published in EMNLP 2021.
+This code accompanies the paper [On Homophony and Rényi Entropy (Pimentel et al., EMNLP 2021)](https://arxiv.org/abs/2109.13766).
+It is a study of the pressures of homophony in language, analysing homophony through the lens of the Rényi collision entropy.
 
 ## Data
 
@@ -71,3 +72,30 @@ Finally, to analyse the models and print results run:
 ```bash
 $ make analyse MONOMORPHEMIC=True LANGUAGE=<language>
 ```
+
+
+## Extra Information
+
+#### Citation
+
+If this code or the paper were usefull to you, consider citing it:
+
+
+```bash
+@inproceedings{pimentel-etal-2020-information,
+    title = "On Homophony and Rényi Entropy",
+    author = "Pimentel, Tiago and
+    Meister, Clara and
+    Teufel, Simone and
+    Cotterell, Ryan",
+    booktitle = "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    year = "2021",
+    publisher = "Association for Computational Linguistics",
+    url = "https://arxiv.org/abs/2109.13766",
+}
+```
+
+
+#### Contact
+
+To ask questions or report problems, please open an [issue](https://github.com/rycolab/homophony-as-renyi-entropy/issues).
