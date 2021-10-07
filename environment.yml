@@ -1,4 +1,4 @@
-name: renyi
+name: homophony-as-renyi
 channels:
   - defaults
   - conda-forge
