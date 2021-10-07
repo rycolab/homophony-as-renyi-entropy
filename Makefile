@@ -1,7 +1,7 @@
 LANGUAGE := eng
 DATASET := celex
 MODEL := lstm
-MONOMORPHEMIC := TRUE
+MONOMORPHEMIC := True
 DROP_POS := False
 N_BOOTSTRAP := 1000
 
