@@ -38,5 +38,36 @@ $ make get_data MONOMORPHEMIC=True LANGUAGE=<language>
 ```
 where language can be one of: `eng` (English), `deu` (German), or `nld` (Dutch).
 
-## Train and Evaluate models
+## Train models
 
+To train a language's phonotactic model run:
+```bash
+$ make train MONOMORPHEMIC=True LANGUAGE=<language> MODEL=<model>
+```
+where model can be one of: `lstm`, or `ngram`.
+
+## Evaluate models
+
+There are three commands to evaluate the trained phonotactic models.
+The first evaluates it on the test set to get its cross-entropy:
+```bash
+$ make eval MONOMORPHEMIC=True LANGUAGE=<language> MODEL=<model>
+```
+
+The second analyses all words with probability above a threshold delta to approximate its renyi entropy:
+```bash
+$ make get_renyi MONOMORPHEMIC=True LANGUAGE=<language> MODEL=<model>
+```
+
+Finally, the third samples artificial lexica from the language models' to run the null hypothesis test:
+```bash
+$ make sample_renyi MONOMORPHEMIC=True LANGUAGE=<language> MODEL=<model>
+```
+
+
+## Analyse models
+
+Finally, to analyse the models and print results run:
+```bash
+$ make analyse MONOMORPHEMIC=True LANGUAGE=<language>
+```

@@ -1,0 +1,2 @@
+name	train_loss	dev_loss	test_loss	alphabet_size	nlayers	hidden_size	embedding_size	dropout
+lstm-lm	3.3381481170654297	3.439382314682007	3.4683265686035156	44	2	256	64	0.33

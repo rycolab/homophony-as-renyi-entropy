@@ -1,0 +1,2 @@
+name	train_loss	dev_loss	test_loss	alphabet_size	nlayers	hidden_size	embedding_size	dropout
+ngram	2.345078945159912	4.372403621673584	4.370392799377441	41	2	256	64	0.33

@@ -130,4 +130,5 @@ dmypy.json
 
 
 # Project
+checkpoint/celex/*/*/*/*/renyi.pckl
 data/
